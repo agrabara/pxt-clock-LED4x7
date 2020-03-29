@@ -23,6 +23,12 @@ LED = TM1637.create(
 LED.showNumber(8888)
 LED.showDP(5, true)
 basic.pause(1000)
+// set date % time -> during "boot"
+if (input.buttonIsPressed(Button.A)) {
+    zegar.DateTime(2020, 3, 29, 7, 14, 50, 0)
+}
+
+
 LED.clear()
 basic.showIcon(IconNames.Yes)
 basic.forever(function () {
