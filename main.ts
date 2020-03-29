@@ -18,6 +18,17 @@ LED = TM1637.create(
     4
 )
 let zegar = DS1302.create(DigitalPin.P13, DigitalPin.P14, DigitalPin.P15)
+
+LED.showNumber(8888)
+LED.showDP(5, true)
+basic.pause(1000)
+
+if (input.buttonIsPressed(Button.A)) {
+    zegar.DateTime(2020, 3, 29, 7, 14, 50, 0)
+}
+LED.clear()
+basic.showIcon(IconNames.Yes)
+
 basic.forever(function () {
     LED.showbit(Math.floor(zegar.getHour() / 10), 0)
     LED.showbit(zegar.getHour() % 10, 1)
@@ -35,4 +46,3 @@ basic.forever(function () {
     }
     basic.pause(100)
 })
- 
